@@ -1,30 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import useCity from "./useCity";
 const SearchParams = () => {
   const [location, setLocation] = useState("Seattle, WA");
   const [animal, updateAnimal] = useState("");
   const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile", "mozarilla"];
-  const [citys, setCity] = useState([""]);
+  var [citys] = useCity(animal);
 
-  useEffect(() => {
-    console.log("fg");
-    requestCity();
-  }, [animal]);
-  async function requestCity() {
-    const res = await fetch(
-      `http://pets-v2.dev-apis.com/pets?animal=${animal}`
-    );
-    const json = await res.json();
-    var s = [];
-    var tab = json.pets;
-    tab.forEach(x => {
-      s.push(x.city);
-    });
-
-    let uniqueChars = [...new Set(s)];
-
-    setCity(uniqueChars);
-  }
   //  const matr= useState("Seattle, WA"); location=matr[0];setlocation=matr[1];
   return (
     <div className="search-params">

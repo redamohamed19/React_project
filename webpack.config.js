@@ -1,13 +1,13 @@
-const path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: './src/app.js'
+    main: "./src/app.js"
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: "./src/index.html"
     })
   ],
 
@@ -16,23 +16,26 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ["babel-loader"]
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: 'html-loader'
+            loader: "html-loader"
           }
         ]
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource'
+        type: "asset/resource"
       }
     ]
   },
+  devServer: {
+    historyApiFallback: true
+  },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ["*", ".js", ".jsx"]
   }
 };

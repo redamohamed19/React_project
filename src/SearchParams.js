@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import useCity from "./useCity";
+
 const SearchParams = () => {
   const [location, setLocation] = useState("Seattle, WA");
   const [animal, updateAnimal] = useState("");

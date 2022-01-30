@@ -1,12 +1,14 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import useCity from "./useCity";
+import ThemeContext from "./ThemeContext";
 
 const SearchParams = () => {
   const [location, setLocation] = useState("Seattle, WA");
   const [animal, updateAnimal] = useState("");
   const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile", "mozarilla"];
   var [citys] = useCity(animal);
+  const [theme] = useContext(ThemeContext);
 
   //  const matr= useState("Seattle, WA"); location=matr[0];setlocation=matr[1];
   return (
@@ -47,7 +49,7 @@ const SearchParams = () => {
             ))}
           </select>
         </label>
-        <button>Submit</button>
+        <button style={{ background: theme }}>Submit</button>
       </form>
     </div>
   );
